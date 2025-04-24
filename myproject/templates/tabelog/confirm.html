@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>最終確認画面</title>
+</head>
+<body>
+    <h2>確認画面</h2>
+
+<h3>Admin User</h3>
+<p>{{ admin_user.name }}（{{ admin_user.email }}）</p>
+
+<h3>優先度設定（Tabelog）</h3>
+<ul>
+  <li>現在地からの距離: {{ tabelog.location_priority }}</li>
+  <li>価格の重要度: {{ tabelog.price_priority }}</li>
+  <li>お店の評価: {{ tabelog.store_rating_priority }}</li>
+  <li>決定権の反映度: {{ tabelog.decision_power_priority }}</li>
+</ul>
+
+<h3>参加ユーザー（NormalUser）</h3>
+<ul>
+  {% for user in normal_users %}
+    <li>{{ user.name }} - 選択: {{ user.select_food }} - 反映度: {{ user.ratio }}</li>
+  {% endfor %}
+</ul>
+
+<h3>通過駅（Stations）</h3>
+<ul>
+  {% for station in stations %}
+    <li>{{ station.name }}</li>
+  {% endfor %}
+</ul>
+
+<form method="POST" action="{% url 'tabelog:execution' admin_id=admin_id %}">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-primary">実行</button>
+</form>
+    
+</body>
+</html>

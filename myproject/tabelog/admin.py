@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Tabelog, Shop
 
-# Register your models here.
+admin.site.register(Tabelog)
+admin.site.register(Shop)

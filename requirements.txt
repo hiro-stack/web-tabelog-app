@@ -39,3 +39,4 @@ virtualenv==20.26.3
 websocket-client==1.8.0
 wsproto==1.2.0
 xyzservices==2024.6.0
+webdriver-manager

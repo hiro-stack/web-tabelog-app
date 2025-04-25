@@ -33,7 +33,7 @@
   {% endfor %}
 </ul>
 
-<form method="POST" action="{% url 'tabelog:execution' admin_id=admin_id %}">
+<form method="POST" action="{% url 'tabelog:execution' admin_user.id %}">
   {% csrf_token %}
   <button type="submit" class="btn btn-primary">実行</button>
 </form>
